@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class playerHead : MonoBehaviour
 {
+    // activ
+    public bool followMouse = false;
     public float speed;
     private Camera cam;
     private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,21 @@ public class playerHead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 target = new Vector3(mouse.x, mouse.y, 0);
-        Vector3 dir = target - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        rb.MoveRotation(Quaternion.AngleAxis(angle, Vector3.forward));
-        Vector3 temp = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        rb.MovePosition(new Vector3(temp.x, temp.y, 0));
+        if (followMouse)
+        {
+            Vector3 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 target = new Vector3(mouse.x, mouse.y, 0);
+            Vector3 dir = target - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            rb.MoveRotation(Quaternion.AngleAxis(angle, Vector3.forward));
+            Vector3 temp = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            rb.MovePosition(new Vector3(temp.x, temp.y, 0));
+        }
+        else
+        {
+            rb.MovePosition(transform.position + transform.right.normalized * speed * Time.deltaTime);
+            rb.MoveRotation(transform.rotation.eulerAngles.z + Random.Range(-2f, 2f));
+        }
     }
     private void FixedUpdate()
     {
