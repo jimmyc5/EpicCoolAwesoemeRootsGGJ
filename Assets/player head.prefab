@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9413f4af6bfae5541851ecd4067ee4ea, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9598411, g: 1, b: 0.88301885, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,8 +105,9 @@ MonoBehaviour:
   distanceToTravel: 10
   distanceTraveled: 0
   startPhysicsSteps: 8
-  speed: 10
+  speed: 2
   thingToSpawn: {fileID: 8490996925529713237}
+  white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!96 &8490996925529713233
 TrailRenderer:
   serializedVersion: 2
@@ -157,8 +158,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.16279602
+        time: 0.0014228821
+        value: 0.13960266
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -166,8 +167,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.27631846
-        value: 0.2906952
+        time: 0.29269877
+        value: 0.19430542
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -176,7 +177,7 @@ TrailRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2558136
+        value: 0.28338623
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -250,7 +251,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2409979, y: 0}
+  m_Offset: {x: 0.5, y: 0}
   serializedVersion: 2
   m_Radius: 1.6403683
 --- !u!50 &8490996925529713580

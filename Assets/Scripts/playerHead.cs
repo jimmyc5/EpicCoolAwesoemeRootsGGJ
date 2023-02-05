@@ -15,8 +15,9 @@ public class playerHead : MonoBehaviour
     private Rigidbody2D rb;
     private TrailRenderer myTrail;
     private Vector3 lastPosition;
-
+    private SpriteRenderer spr;
     public GameObject thingToSpawn;
+    public Color white;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class playerHead : MonoBehaviour
         lastPosition = transform.position;
         startPhysicsSteps = 10;
         myTrail.sortingOrder = 1;
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class playerHead : MonoBehaviour
             GameObject.Instantiate(thingToSpawn, myTrail.GetPosition(pos1), Quaternion.identity);
             GameObject.Instantiate(thingToSpawn, myTrail.GetPosition(pos2), Quaternion.identity);
             rb.isKinematic = true;
+            spr.color = white;
             enabled = false;
 
         }
@@ -83,7 +86,7 @@ public class playerHead : MonoBehaviour
         distanceTraveled += dist;
         GameManager.instance.totalDistance += dist;
         Vector3 dir = transform.position - lastPosition;
-        if(dir.magnitude > 0.05f)
+        if(dir.magnitude > 0.04f)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = (Quaternion.AngleAxis(angle, Vector3.forward));

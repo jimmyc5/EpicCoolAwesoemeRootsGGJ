@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Image barFill;
     public TextMeshProUGUI potText;
     private int currentPot = 1;
-    private float[] fillRequirements = { 1f, 70f, 170f, 400f, 400f};
+    private float[] fillRequirements = { 1f, 60f, 150f, 400f, 400f};
     private bool restarting = false;
 
     public Animator potGraphics;

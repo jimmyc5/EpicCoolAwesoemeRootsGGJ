@@ -53,7 +53,7 @@ public class trailCollisions : MonoBehaviour
         List<Vector2> points = new List<Vector2>();
         //avoid having default points at (-.5,0),(.5,0)
         Vector2 point;
-        if (trail.positionCount == 0)
+        if (trail.positionCount < 3)
         {
             points.Add(transform.position);
             points.Add(transform.position);
@@ -64,7 +64,7 @@ public class trailCollisions : MonoBehaviour
                 collider.isTrigger = false;
                 point = trail.GetPosition(position);
                 // ignores z axis when translating vector3 to vector2
-                if (Vector3.Distance(transform.position, new Vector3(point.x,point.y)) > col.radius *0.02f)
+                if (Vector3.Distance(transform.position, new Vector3(point.x,point.y)) > col.radius *0.07f)
                 {
                     points.Add(point);
                 }
