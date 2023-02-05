@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,13 @@ public class GameManager : MonoBehaviour
     public Image barFill;
     public TextMeshProUGUI potText;
     private int currentPot = 1;
-    private float[] fillRequirements = { 50f, 70f, 100f};
+    private float[] fillRequirements = { 19f, 60f, 100f, 900f};
+    private bool restarting = false;
+
+    public Animator potGraphics;
+
+    //time to transition between scenes
+    public float transitionTime = 2f;
 
     private void Awake()
     {
@@ -26,7 +33,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         //This is the code that carries the GM over between scenes
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
 
@@ -41,5 +48,43 @@ public class GameManager : MonoBehaviour
     {
         barFill.fillAmount = totalDistance / fillRequirements[currentPot];
         potText.text = currentPot.ToString();
+
+        if(totalDistance > fillRequirements[currentPot])
+        {
+            currentPot++;
+            potGraphics.SetInteger("Pot", currentPot);
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            if (!restarting)
+            {
+                restarting = true;
+                RestartScene();
+            }
+        }
+    }
+    public void RestartScene()
+    {
+
+        //fade out
+        ScreenFade sf = FindObjectOfType<ScreenFade>();
+        if (sf)
+        {
+            sf.FadeOut();
+        }
+        // restart level, make sure to reset the liquid (water/lava) levels to what they were when the scene started
+        StartCoroutine(LoadLevelFromName(SceneManager.GetActiveScene().name));
+    }
+
+    IEnumerator LoadLevelFromName(string sceneName)
+    {
+        yield return new WaitForSeconds(transitionTime);
+
+        // to be called when restarting only: set water/lava back to what they were when the scene began
+
+
+        SceneManager.LoadScene(sceneName);
+        restarting = false;
     }
 }

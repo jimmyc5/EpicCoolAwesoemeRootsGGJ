@@ -29,6 +29,10 @@ public class trailCollisions : MonoBehaviour
     EdgeCollider2D GetValidCollider()
     {
         EdgeCollider2D validCollider;
+        if(unusedColliders.Count > 0 && unusedColliders[0] == null)
+        {
+            unusedColliders = new List<EdgeCollider2D>();
+        }
         if (unusedColliders.Count > 0)
         {
             validCollider = unusedColliders[0];
