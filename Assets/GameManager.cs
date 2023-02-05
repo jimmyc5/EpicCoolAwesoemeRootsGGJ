@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Image barFill;
     public TextMeshProUGUI potText;
     private int currentPot = 1;
-    private float[] fillRequirements = { 1f, 2f, 40f, 900f};
+    private float[] fillRequirements = { 1f, 70f, 170f, 400f, 400f};
     private bool restarting = false;
 
     public Animator potGraphics;
@@ -47,9 +47,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         barFill.fillAmount = totalDistance / fillRequirements[currentPot];
-        potText.text = currentPot.ToString();
+        if (currentPot < 4)
+        {
+            potText.text = currentPot.ToString();
+        }
+        
 
-        if(totalDistance > fillRequirements[currentPot])
+        if(totalDistance > fillRequirements[currentPot] && currentPot < 4)
         {
             currentPot++;
             potGraphics.SetInteger("Pot", currentPot);
