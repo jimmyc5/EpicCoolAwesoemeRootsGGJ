@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public float totalDistance = 0f;
-    
+    public Image barFill;
+    public TextMeshProUGUI potText;
+    private int currentPot = 1;
+    private float[] fillRequirements = { 50f, 70f, 100f};
 
     private void Awake()
     {
@@ -28,12 +33,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        barFill.fillAmount = totalDistance / fillRequirements[currentPot];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        barFill.fillAmount = totalDistance / fillRequirements[currentPot];
+        potText.text = currentPot.ToString();
     }
 }

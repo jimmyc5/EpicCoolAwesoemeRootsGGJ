@@ -29,6 +29,7 @@ public class playerHead : MonoBehaviour
         rb.isKinematic = false;
         lastPosition = transform.position;
         startPhysicsSteps = 10;
+        myTrail.sortingOrder = 1;
     }
 
     // Update is called once per frame
