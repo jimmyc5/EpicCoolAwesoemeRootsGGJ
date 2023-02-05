@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class trailCollisions : MonoBehaviour
 {
     TrailRenderer myTrail;
@@ -9,12 +10,14 @@ public class trailCollisions : MonoBehaviour
 
     static List<EdgeCollider2D> unusedColliders = new List<EdgeCollider2D>();
 
-    public int startCollisionsOffset = 0;
+    private CircleCollider2D col;
+    public int colliderPointOffset = 10;
 
     void Awake()
     {
         myTrail = this.GetComponent<TrailRenderer>();
         myCollider = GetValidCollider();
+        col = this.GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -45,15 +48,23 @@ public class trailCollisions : MonoBehaviour
     {
         List<Vector2> points = new List<Vector2>();
         //avoid having default points at (-.5,0),(.5,0)
+        Vector2 point;
         if (trail.positionCount == 0)
         {
             points.Add(transform.position);
             points.Add(transform.position);
+            collider.isTrigger = true;
         }
-        else for (int position = 0; position < trail.positionCount - startCollisionsOffset; position++)
+        else for (int position = 0; position < trail.positionCount - colliderPointOffset; position++)
             {
-                //ignores z axis when translating vector3 to vector2
-                points.Add(trail.GetPosition(position));
+                collider.isTrigger = false;
+                point = trail.GetPosition(position);
+                // ignores z axis when translating vector3 to vector2
+                if (Vector3.Distance(transform.position, new Vector3(point.x,point.y)) > col.radius *0.02f)
+                {
+                    points.Add(point);
+                }
+                
             }
         collider.SetPoints(points);
     }

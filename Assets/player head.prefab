@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8490996925529713237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.98, y: 2.8, z: 0}
-  m_LocalScale: {x: 0.40095845, y: 0.40095845, z: 0.40095845}
+  m_LocalScale: {x: 0.025, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,9 +78,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f3ad592880913ae4f994b51d2ae05114, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0793dbec120d10499d0ea9af4deff08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -102,10 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followMouse: 0
-  speed: 2
-  minimumSpawnTime: 4
-  maximumSpawnTime: 10
-  rootToSpawn: {fileID: 8490996925529713237}
+  distanceToTravel: 10
+  distanceTraveled: 0
+  startPhysicsSteps: 500
+  speed: 10
+  thingToSpawn: {fileID: 8490996925529713237}
 --- !u!96 &8490996925529713233
 TrailRenderer:
   serializedVersion: 2
@@ -127,7 +128,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49ae0976fe3bfbb4ea819cd8bb749300, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,16 +188,16 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0.754717, g: 0.46109694, b: 0.03275192, a: 1}
+      key0: {r: 1, g: 0.7582917, b: 0.37358493, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 55447
+      ctime0: 36965
+      ctime1: 65535
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -217,7 +218,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d259e9c9272f1d04291e7f5cf72aeaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCollisionsOffset: 5
+  colliderPointOffset: 0
 --- !u!58 &8490996925529713583
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -251,7 +252,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.17850743, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32149252
+  m_Radius: 8
 --- !u!50 &8490996925529713580
 Rigidbody2D:
   serializedVersion: 4
@@ -272,4 +273,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
