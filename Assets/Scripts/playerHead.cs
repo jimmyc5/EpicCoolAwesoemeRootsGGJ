@@ -86,7 +86,7 @@ public class playerHead : MonoBehaviour
         distanceTraveled += dist;
         GameManager.instance.totalDistance += dist;
         Vector3 dir = transform.position - lastPosition;
-        if(dir.magnitude > 0.04f)
+        if(dir.magnitude > 0.02f)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = (Quaternion.AngleAxis(angle, Vector3.forward));

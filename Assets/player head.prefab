@@ -105,7 +105,7 @@ MonoBehaviour:
   distanceToTravel: 10
   distanceTraveled: 0
   startPhysicsSteps: 8
-  speed: 2
+  speed: 3
   thingToSpawn: {fileID: 8490996925529713237}
   white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!96 &8490996925529713233

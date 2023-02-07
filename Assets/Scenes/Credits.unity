@@ -446,7 +446,7 @@ RectTransform:
   m_GameObject: {fileID: 1152435637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2728312, y: 2.131431, z: 2.131431}
+  m_LocalScale: {x: 1.2728312, y: 1.7144699, z: 2.131431}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1795986277}
@@ -454,7 +454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 134}
+  m_AnchoredPosition: {x: -25, y: 167}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152435639
@@ -483,7 +483,8 @@ MonoBehaviour:
 
     Art: Alan Sameth
 
-'
+    Music:
+    Casey Bloome'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a10663ee53306ac45b45a54044323330, type: 2}
   m_sharedMaterial: {fileID: -4083973147174852174, guid: a10663ee53306ac45b45a54044323330, type: 2}
@@ -773,7 +774,7 @@ RectTransform:
   m_GameObject: {fileID: 1795986276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58200884, y: 0.3893036, z: 0.3893036}
+  m_LocalScale: {x: 0.58200884, y: 0.46716434, z: 0.3893036}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1152435638}
